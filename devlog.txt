@@ -63,4 +63,5 @@ ryanL -- 2022-11-08 22:55
 - rename existing template files to make it make sense
 - finish basic versions of .html files from DD
 - added utility classes to style.css
+- +requirements.txt
 ==============================================================
