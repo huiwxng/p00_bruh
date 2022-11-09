@@ -6,11 +6,14 @@
 
 <h3>login</h3>
 
-<form method="POST" action="/login">
+<form method="POST" action="/">
     <input class="mb-2" placeholder="username" type="text" name="username">
     <br>
     <input class="mb-2" placeholder="password" type="password" name="password">
     <br>
+    {% if message %}
+    <p class="text-red">{{message}}</p>
+    {% endif %}
     <input class="mb-2" type="submit" value="login">
 </form>
 

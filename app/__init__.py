@@ -1,14 +1,24 @@
-from flask import Flask, render_template 
+from flask import Flask, render_template, request, session
+import secrets
 app = Flask(__name__)
 
-@app.route("/")
-def home():
-    # should only be visible to logged in users
-    return render_template('home.html', contributed_stories=[], new_stories=[]) 
+username = 'rm'
+password = 'jimin'
+app.secret_key = secrets.token_hex()
 
-@app.route("/login") # merge with / once Flask session in place
-def login():
-    return render_template('login.html') 
+@app.route("/", methods=['GET', 'POST'])
+def home():
+    if request.method == "GET":
+        if 'username' in session:
+            return render_template('home.html', contributed_stories=[], new_stories=[]) 
+        return render_template('login.html')
+    else:
+        if username != request.form['username']:
+            return render_template('login.html', message = "username does not exist")
+        if password != request.form['password']:
+            return render_template('login.html', message = "bad password")
+        session['username'] = request.form['username']
+        return render_template('home.html', contributed_stories=[], new_stories=[])
 
 @app.route("/register")
 def register():
@@ -34,6 +44,11 @@ def story(id):
 @app.route("/hidden_story/<id>") # merge with /story/<id> once db in place
 def hidden_story(id):
     return render_template('hidden_story.html', story_title="test", story_id=id, last_line="hello") 
+
+@app.route("/logout")
+def logout():
+    session.pop('username', None)
+    return render_template('login.html', message="logged out")
 
 if __name__ == "__main__":
     app.debug = True
