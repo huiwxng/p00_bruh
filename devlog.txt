@@ -46,3 +46,21 @@ ryanL, huiW, jonathanS -- 2022-11-02 22:22
         - prioritized todos
 - added devlog entries for last two days
 ==============================================================
+
+ryanL -- 2022-11-07 09:25
+--------------------------------------------------------------
+- start on homepage html templates
+==============================================================
+
+ryanL -- 2022-11-08 22:55
+--------------------------------------------------------------
+- update dd
+    - removed mentions of tracking sessions with a sessions table
+    - /stories and /new_stories now use the same template
+    - crossed out items completed
+- create basic version of app.py to work on html
+- use jinja template inheritance (https://jinja.palletsprojects.com/en/3.1.x/templates/#template-inheritance)
+- rename existing template files to make it make sense
+- finish basic versions of .html files from DD
+- added utility classes to style.css
+==============================================================
