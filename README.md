@@ -40,4 +40,4 @@ pip install -r requirements.txt
 python app/__init__.py
 ```
 
-5. Visit `http://127.0.0.1:5000/` in browser.
+5. Visit `http://127.0.0.1:5000/` in browser
