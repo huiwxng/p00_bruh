@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}{{story_title}}{% endblock %}
+
+{% block content %}
+
+<h3>{{story_title}}</h3>
+
+<p>
+    {{last_line}}
+</p>
+
+<form method="POST" action="/story/edit">
+    <textarea cols="40" class="mb-2" placeholder="Continue the story!" type="text" name="line"></textarea>
+    <br>
+    <input class="mb-2" type="submit" value="Write!">
+</form>
+
+{% endblock %}

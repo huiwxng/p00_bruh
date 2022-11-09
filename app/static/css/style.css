@@ -1,0 +1,12 @@
+.mb-2 {
+    margin-bottom: 0.5rem;
+}
+
+.text-red {
+    color: red;
+}
+
+.decoration-none {
+    text-decoration: none;
+    color: black;
+}

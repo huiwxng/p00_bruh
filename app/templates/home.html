@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}home{% endblock %}
+
+{% block content %}
+
+<h3> <a href="/new">create a new story</a> </h3>
+
+<h3> read stories </h3>
+
+<ul>
+    {% for story in contributed_stories %}
+    <li>{{story}}</li>
+    {% endfor %}
+    <li><a href="/stories">view all stories you've contributed to</a></li>
+</ul>
+
+<h3> write stories </h3>
+
+<ul>
+    {% for story in new_stories %}
+    <li>{{story}}</li>
+    {% endfor %}
+    <li><a href="/new_stories">view all stories you haven't contributed to</a></li>
+</ul>
+</ul>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}{{story_title}}{% endblock %}
+
+{% block content %}
+
+<h3>{{story_title}}</h3>
+<h3>written by: {{ authors|join(", ") }}</h3>
+
+<p>
+    {{story}}
+</p>
+
+{% endblock %}
