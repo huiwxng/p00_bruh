@@ -1,10 +1,11 @@
 from flask import Flask, render_template, request, session
 import secrets
+from db import auth, stories
+
 app = Flask(__name__)
 
 username = 'rm'
 password = 'jimin'
-app.secret_key = secrets.token_hex()
 
 @app.route("/", methods=['GET', 'POST'])
 def home():
@@ -25,7 +26,7 @@ def register():
     return render_template('register.html') 
 
 @app.route("/stories")
-def stories():
+def contributed_stories():
     return render_template('stories.html', page_title="read stories", stories=[]) 
 
 @app.route("/new_stories")
@@ -52,4 +53,9 @@ def logout():
 
 if __name__ == "__main__":
     app.debug = True
+    app.secret_key = secrets.token_hex()
+    
+    auth.create_table()
+    stories.create_tables()
+
     app.run()
