@@ -1,25 +1,14 @@
-from flask import Flask, render_template, request, session, redirect
+from flask import Flask, render_template, request, session, redirect, flash
 import secrets
 from db import auth, stories
 
 app = Flask(__name__)
 
-@app.route("/", methods=['GET', 'POST'])
+@app.route("/")
 def home():
-    if request.method == "GET":
-        if 'username' in session:
-            return render_template('home.html', contributed_stories=[], new_stories=[]) 
-        return render_template('login.html')
-    else:
-        username = request.form["username"]
-        password = request.form["password"]
-        info_correct = auth.check_creds(username, password)
-
-        if info_correct:
-            session['username'] = request.form['username']
-            return render_template('home.html', contributed_stories=[], new_stories=[])
-
-        return render_template('login.html', message = "wrong username or password")
+    if 'username' in session:
+        return render_template('home.html', contributed_stories=[], new_stories=[]) 
+    return render_template('login.html')
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -61,9 +50,23 @@ def story(id):
 def hidden_story(id):
     return render_template('hidden_story.html', story_title="test", story_id=id, last_line="hello") 
 
+@app.route("/login", methods=["POST"])
+def login():
+    username = request.form["username"]
+    password = request.form["password"]
+    info_correct = auth.check_creds(username, password)
+
+    if info_correct:
+        session['username'] = request.form['username']
+    else:
+        flash("invalid username or password")
+
+    return redirect("/")
+
 @app.route("/logout")
 def logout():
     session.pop('username', None)
+    flash("logged out")
     return redirect("/")
 
 if __name__ == "__main__":

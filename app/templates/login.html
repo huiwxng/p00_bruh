@@ -6,14 +6,20 @@
 
 <h3>login</h3>
 
-<form method="POST" action="/">
+<form method="POST" action="/login">
     <input class="mb-2" placeholder="username" type="text" name="username">
     <br>
     <input class="mb-2" placeholder="password" type="password" name="password">
     <br>
-    {% if message %}
-    <p class="text-red">{{message}}</p>
-    {% endif %}
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p class="text-red">{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
     <input class="mb-2" type="submit" value="login">
 </form>
 
