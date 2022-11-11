@@ -1,11 +1,8 @@
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request, session, redirect
 import secrets
 from db import auth, stories
 
 app = Flask(__name__)
-
-username = 'rm'
-password = 'jimin'
 
 @app.route("/", methods=['GET', 'POST'])
 def home():
@@ -14,16 +11,34 @@ def home():
             return render_template('home.html', contributed_stories=[], new_stories=[]) 
         return render_template('login.html')
     else:
-        if username != request.form['username']:
-            return render_template('login.html', message = "username does not exist")
-        if password != request.form['password']:
-            return render_template('login.html', message = "bad password")
-        session['username'] = request.form['username']
-        return render_template('home.html', contributed_stories=[], new_stories=[])
+        username = request.form["username"]
+        password = request.form["password"]
+        info_correct = auth.check_creds(username, password)
 
-@app.route("/register")
+        if info_correct:
+            session['username'] = request.form['username']
+            return render_template('home.html', contributed_stories=[], new_stories=[])
+
+        return render_template('login.html', message = "wrong username or password")
+
+@app.route("/register", methods=["GET", "POST"])
 def register():
-    return render_template('register.html') 
+    if request.method == "GET":
+        if 'username' in session:
+            return redirect("/")
+        return render_template('register.html')
+    else:
+        username = request.form["username"]
+        password = request.form["password"]
+
+        available = auth.check_username(username)
+        if not available:
+            return render_template('register.html', message="username not available")
+
+        auth.register_user(username, password)
+
+        session['username'] = request.form['username']
+        return redirect('/') 
 
 @app.route("/stories")
 def contributed_stories():
@@ -49,7 +64,7 @@ def hidden_story(id):
 @app.route("/logout")
 def logout():
     session.pop('username', None)
-    return render_template('login.html', message="logged out")
+    return redirect("/")
 
 if __name__ == "__main__":
     app.debug = True
