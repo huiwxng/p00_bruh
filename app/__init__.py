@@ -30,18 +30,6 @@ def register():
         session['user_id'] = auth.get_user_id(username)
         return redirect('/') 
     
-@app.route("/stories")
-def contributed_stories():
-    if 'username' not in session:
-        return redirect("/")
-    return render_template('stories.html', page_title="read stories", stories=[]) 
-
-@app.route("/new_stories")
-def new_stories():
-    if 'username' not in session:
-        return redirect("/")
-    return render_template('stories.html', page_title="new stories", stories=[]) 
-
 @app.route("/new", methods=["GET", "POST"])
 def new():
     if 'username' not in session:
