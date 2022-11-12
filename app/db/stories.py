@@ -29,6 +29,14 @@ def create_story(title, text, user_id):
 
     return story_id
 
+def get_story(story_id):
+    conn = get_connection()
+    with conn:
+        c = conn.cursor()
+        r = c.execute("SELECT text FROM contributions WHERE story_id = ?", (story_id,))
+        story = r.fetchall()
+        print(story)
+    conn.close()
 
 # TODO
 def get_all_contributed_stories(user_id):
