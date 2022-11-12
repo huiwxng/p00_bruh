@@ -26,6 +26,13 @@ def check_username(username):
         user = r.fetchone()
     return user is None
 
+def get_user_id(username):
+    conn = get_connection()
+    with conn:
+        c = conn.cursor()
+        r = c.execute("SELECT id FROM users WHERE username = ?", (username,))
+        id = r.fetchone()
+    return id[0]
 
 def register_user(username, password):
     available = check_username(username)

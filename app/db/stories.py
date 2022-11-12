@@ -1,5 +1,4 @@
 from db import get_connection
-from datetime import datetime
 
 def create_tables():
     conn = get_connection()
