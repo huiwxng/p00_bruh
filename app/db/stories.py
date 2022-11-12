@@ -1,5 +1,6 @@
 from db import get_connection
 
+
 def create_tables():
     conn = get_connection()
     with conn:
@@ -29,6 +30,7 @@ def create_story(title, text, user_id):
 
     return story_id
 
+
 def get_title(story_id):
     conn = get_connection()
     with conn:
@@ -37,6 +39,7 @@ def get_title(story_id):
         title = r.fetchone()
     conn.close()
     return title[0]
+
 
 def get_story(story_id):
     conn = get_connection()
@@ -48,6 +51,7 @@ def get_story(story_id):
     conn.close()
     return story
 
+
 def get_contributors(story_id):
     conn = get_connection()
     with conn:
@@ -56,19 +60,39 @@ def get_contributors(story_id):
         contributors = r.fetchall()
         contributors = [line[0] for line in contributors]
     conn.close()
-    print(contributors)
+    return contributors
 
-# TODO
-def get_all_contributed_stories(user_id):
+
+def get_all():
     conn = get_connection()
     with conn:
         c = conn.cursor()
-        r = c.execute("SELECT * FROM stories JOIN contributions ON contributions.story_id = stories.id")
-        story = r.fetchmany()
-        print(story)
+        r = c.execute("SELECT stories.id, title FROM stories")
+        stories = r.fetchall()
+        stories = [[story[0], story[1]] for story in stories]
     conn.close()
+    return stories
 
-def delete_table():
+
+def get_contributed(user_id):
+    conn = get_connection()
+    with conn:
+        c = conn.cursor()
+        r = c.execute("SELECT stories.id, title FROM stories JOIN contributions ON contributions.story_id = stories.id WHERE user_id=?", (user_id,))
+        stories = r.fetchall()
+        stories = [[story[0], story[1]] for story in stories]
+    conn.close()
+    return stories
+
+
+def get_uncontributed(user_id):
+    all_stories = get_all()
+    contributed_stories = get_contributed(user_id)
+    uncontributed_stories = [story for story in all_stories if story not in contributed_stories]
+    return uncontributed_stories
+
+
+def delete_tables():
     conn = get_connection()
     with conn:
         c = conn.cursor()

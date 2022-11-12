@@ -10,18 +10,20 @@
 
 <ul>
     {% for story in contributed_stories %}
-    <li>{{story}}</li>
+    <li>
+        <a href="/story/{{story[0]}}">{{story[1]}}</a>
+    </li>
     {% endfor %}
-    <li><a href="/stories">view all stories you've contributed to</a></li>
 </ul>
 
 <h3> write stories </h3>
 
 <ul>
-    {% for story in new_stories %}
-    <li>{{story}}</li>
+    {% for story in uncontributed_stories %}
+    <li>
+        <a href="/story/{{story[0]}}">{{story[1]}}</a>
+    </li>
     {% endfor %}
-    <li><a href="/new_stories">view all stories you haven't contributed to</a></li>
 </ul>
 </ul>
 

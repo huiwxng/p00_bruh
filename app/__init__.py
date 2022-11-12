@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     if 'username' in session:
-        return render_template('home.html', contributed_stories=[], new_stories=[]) 
+        return render_template('home.html', contributed_stories=stories.get_contributed(session["user_id"]), uncontributed_stories=stories.get_uncontributed(session["user_id"])) 
     return render_template('login.html')
 
 @app.route("/register", methods=["GET", "POST"])

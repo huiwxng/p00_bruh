@@ -106,3 +106,7 @@ ryanL, huiW -- 2022-11-12 10:30
 - work on stories tables queries
 - implement story related routes
 ==============================================================
+
+ryanL -- 2022-11-12 15:00
+--------------------------------------------------------------
+- finish stories tables queries

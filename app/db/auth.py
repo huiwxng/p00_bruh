@@ -1,5 +1,6 @@
 from db import get_connection
 
+
 def create_table():
     conn = get_connection()
     with conn:
@@ -18,6 +19,7 @@ def check_creds(username, password):
 
     return user is not None
 
+
 def check_username(username):
     conn = get_connection()
     with conn:
@@ -26,6 +28,7 @@ def check_username(username):
         user = r.fetchone()
     return user is None
 
+
 def get_user_id(username):
     conn = get_connection()
     with conn:
@@ -33,6 +36,7 @@ def get_user_id(username):
         r = c.execute("SELECT id FROM users WHERE username = ?", (username,))
         id = r.fetchone()
     return id[0]
+
 
 def register_user(username, password):
     available = check_username(username)
@@ -46,6 +50,7 @@ def register_user(username, password):
     conn.close()
 
     return True
+
 
 def delete_table():
     conn = get_connection()
