@@ -29,14 +29,40 @@ def create_story(title, text, user_id):
 
     return story_id
 
+def get_title(story_id):
+    conn = get_connection()
+    with conn:
+        c = conn.cursor()
+        r = c.execute("SELECT title FROM stories WHERE id = ?", (story_id,))
+        title = r.fetchone()
+    conn.close()
+    return title[0]
+
 def get_story(story_id):
     conn = get_connection()
     with conn:
         c = conn.cursor()
         r = c.execute("SELECT text FROM contributions WHERE story_id = ?", (story_id,))
         story = r.fetchall()
-        print(story)
     conn.close()
+    
+    story = [line[0] for line in story]
+    print(story)
+    
+    return story
+
+def get_contributors(story_id):
+    conn = get_connection()
+    with conn:
+        c = conn.cursor()
+        r = c.execute("SELECT username FROM users JOIN contributions ON story_id", (story_id,))
+        story = r.fetchall()
+    conn.close()
+    
+    story = [line[0] for line in story]
+    story = "\n".join(story)
+    
+    return story
 
 # TODO
 def get_all_contributed_stories(user_id):

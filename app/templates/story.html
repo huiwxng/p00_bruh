@@ -8,7 +8,10 @@
 <h3>written by: {{ authors|join(", ") }}</h3>
 
 <p>
-    {{story}}
+    {% for line in story %}
+    {{line}}
+    <br>
+    {% endfor %}
 </p>
 
 <form action="/home">

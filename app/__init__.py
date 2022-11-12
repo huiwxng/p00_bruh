@@ -27,8 +27,9 @@ def register():
         auth.register_user(username, password)
 
         session['username'] = request.form['username']
+        session['user_id'] = auth.get_user_id(username)
         return redirect('/') 
-
+    
 @app.route("/stories")
 def contributed_stories():
     if 'username' not in session:
@@ -55,6 +56,7 @@ def new():
 def story(id):
     if 'username' not in session:
         return redirect("/")
+    return render_template('story.html', story_title=stories.get_title(id), authors=["ts", "sm"], story=stories.get_story(id)) 
     # should only be visible to users who contributed to story id
     return render_template('story.html', story_title="test", authors=["ts", "sm"], story="hello world") 
 
@@ -90,7 +92,8 @@ def logout():
 
 if __name__ == "__main__":
     app.debug = True
-    app.secret_key = secrets.token_hex()
+    # app.secret_key = secrets.token_hex()
+    app.secret_key = "."
     
     auth.create_table()
     stories.create_tables()
