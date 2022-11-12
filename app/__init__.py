@@ -60,7 +60,22 @@ def story(id):
     if session["username"] in stories.get_contributors(id):
         return render_template('story.html', story_title=stories.get_title(id), authors=stories.get_contributors(id), story=stories.get_story(id)) 
     
-    return render_template('hidden_story.html', story_title=stories.get_title(id), last_line=stories.get_story(id)[-1]) 
+    return render_template('hidden_story.html', story_title=stories.get_title(id), story_id=id, last_line=stories.get_story(id)[-1]) 
+
+
+@app.route("/story/<id>/edit", methods=["POST"])
+def edit_story(id):
+    if 'username' not in session:
+        return redirect("/")
+
+    if session["username"] in stories.get_contributors(id):
+        return redirect("/")
+    
+    contribution = request.form["line"]
+    stories.add_contribution(contribution, id, session["user_id"])
+
+    return redirect("/story/" + id)
+
 
 @app.route("/login", methods=["POST"])
 def login():
@@ -88,8 +103,8 @@ def logout():
 
 if __name__ == "__main__":
     app.debug = True
-    # app.secret_key = secrets.token_hex()
-    app.secret_key = "."
+    app.secret_key = secrets.token_hex()
+    # app.secret_key = "."
     
     auth.create_table()
     stories.create_tables()

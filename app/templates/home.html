@@ -14,7 +14,11 @@
         <a href="/story/{{story[0]}}">{{story[1]}}</a>
     </li>
     {% endfor %}
+
 </ul>
+{% if contributed_stories|length == 0 %}
+    <p class="text-red">no stories to read, create a new story or contribute to a story below</p>
+{% endif %}
 
 <h3> write stories </h3>
 
@@ -25,7 +29,10 @@
     </li>
     {% endfor %}
 </ul>
-</ul>
+
+{% if uncontributed_stories|length == 0 %}
+    <p class="text-red">no new stories :(</p>
+{% endif %}
 
 <form action="/logout">
     <input type="submit" name="logout" value="logout">
