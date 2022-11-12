@@ -54,16 +54,13 @@ def new():
 
 @app.route("/story/<id>")
 def story(id):
-    # should only be visible to users who contributed to story id
     if 'username' not in session:
         return redirect("/")
-    return render_template('story.html', story_title=stories.get_title(id), authors=stories.get_contributors(id), story=stories.get_story(id)) 
 
-@app.route("/hidden_story/<id>") # merge with /story/<id> once db in place
-def hidden_story(id):
-    if 'username' not in session:
-        return redirect("/")
-    return render_template('hidden_story.html', story_title="test", last_line="hello") 
+    if session["username"] in stories.get_contributors(id):
+        return render_template('story.html', story_title=stories.get_title(id), authors=stories.get_contributors(id), story=stories.get_story(id)) 
+    
+    return render_template('hidden_story.html', story_title=stories.get_title(id), last_line=stories.get_story(id)[-1]) 
 
 @app.route("/login", methods=["POST"])
 def login():
