@@ -93,3 +93,10 @@ huiW -- 2022-11-12 00:45
 - implement sqlite query into flask
 - add home redirect
 ==============================================================
+
+ryanL -- 2022-11-12 8:30
+--------------------------------------------------------------
+- check session before loading pages that need session; 
+  redirect to / if not logged in
+- save user's id into session
+==============================================================
