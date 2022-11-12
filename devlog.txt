@@ -100,3 +100,9 @@ ryanL -- 2022-11-12 8:30
   redirect to / if not logged in
 - save user's id into session
 ==============================================================
+
+ryanL, huiW -- 2022-11-12 10:30
+--------------------------------------------------------------
+- work on stories tables queries
+- implement story related routes
+==============================================================

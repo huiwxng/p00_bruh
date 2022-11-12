@@ -44,25 +44,19 @@ def get_story(story_id):
         c = conn.cursor()
         r = c.execute("SELECT text FROM contributions WHERE story_id = ?", (story_id,))
         story = r.fetchall()
+        story = [line[0] for line in story]
     conn.close()
-    
-    story = [line[0] for line in story]
-    print(story)
-    
     return story
 
 def get_contributors(story_id):
     conn = get_connection()
     with conn:
         c = conn.cursor()
-        r = c.execute("SELECT username FROM users JOIN contributions ON story_id", (story_id,))
-        story = r.fetchall()
+        r = c.execute("SELECT username FROM users JOIN contributions ON users.id=contributions.user_id WHERE story_id=?", (story_id,))
+        contributors = r.fetchall()
+        contributors = [line[0] for line in contributors]
     conn.close()
-    
-    story = [line[0] for line in story]
-    story = "\n".join(story)
-    
-    return story
+    print(contributors)
 
 # TODO
 def get_all_contributed_stories(user_id):

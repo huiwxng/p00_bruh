@@ -17,4 +17,4 @@ in_my_blood_id = stories.create_story("In My Blood", "Help me, it's like the wal
 
 stories.add_contribution("I close my eyes and the flashback starts", love_story_id, shawn_id)
 
-stories.get_story(love_story_id)
+stories.get_contributors(love_story_id)
