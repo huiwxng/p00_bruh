@@ -47,3 +47,11 @@ def get_all_contributed_stories(user_id):
         story = r.fetchmany()
         print(story)
     conn.close()
+
+def delete_table():
+    conn = get_connection()
+    with conn:
+        c = conn.cursor()
+        c.execute("DROP TABLE IF EXISTS stories")
+        c.execute("DROP TABLE IF EXISTS contributions")
+    conn.close()

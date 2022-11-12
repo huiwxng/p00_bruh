@@ -46,3 +46,10 @@ def register_user(username, password):
     conn.close()
 
     return True
+
+def delete_table():
+    conn = get_connection()
+    with conn:
+        c = conn.cursor()
+        c.execute("DROP TABLE IF EXISTS users")
+    conn.close()

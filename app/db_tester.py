@@ -1,23 +1,20 @@
 from db import auth, stories
 
-# auth.create_table()
-# stories.create_tables()
+auth.delete_table()
+stories.delete_table()
 
-# registered = auth.register_user("ryan", "ryan")
-# print(registered)
+auth.create_table()
+stories.create_tables()
 
-# a = auth.check_creds("ryan", "ryan")
-# print(a)
+auth.register_user("taylorswift", "t@y10r$w1ft")
+auth.register_user("shawnmendes", "$h@wnm3nd3$")
 
-# b = auth.check_creds("adsfa", "ryan")
-# print(b)
+taylor_id = auth.get_user_id("taylorswift")
+shawn_id = auth.get_user_id("shawnmendes")
 
-# c = stories.create_story("adfaf", "safasdf", 231231)
+love_story_id = stories.create_story("Love Story", "We were both young when I first saw you", taylor_id)
+in_my_blood_id = stories.create_story("In My Blood", "Help me, it's like the walls are caving in", shawn_id)
 
-# for i in range(10):
-#     stories.add_contribution("hi", c, i)
+stories.add_contribution("I close my eyes and the flashback starts", love_story_id, shawn_id)
 
-stories.get_all_contributed_stories(1)
-
-# d = auth.get_user_id("ryan")
-# print(d)
+stories.get_story(love_story_id)
