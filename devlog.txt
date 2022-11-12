@@ -87,3 +87,9 @@ ryanL -- 2022-11-10 23:00
 - flesh out /login and /register to check credentials from db
 - use Flask message flashing: https://flask.palletsprojects.com/en/2.2.x/patterns/flashing/
 ==============================================================
+
+huiW -- 2022-11-12 00:45
+--------------------------------------------------------------
+- implement sqlite query into flask
+- add home redirect
+==============================================================

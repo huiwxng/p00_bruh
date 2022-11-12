@@ -37,9 +37,14 @@ def contributed_stories():
 def new_stories():
     return render_template('stories.html', page_title="new stories", stories=[]) 
 
-@app.route("/new")
+@app.route("/new", methods=["GET", "POST"])
 def new():
-    return render_template('new_story.html') 
+    if request.method == "GET":
+        print(session)
+        return render_template('new_story.html')
+    else:
+        stories.create_story(request.form["title"], request.form["story"], "1")
+        return redirect('/stories') 
 
 @app.route("/story/<id>")
 def story(id):
@@ -61,6 +66,10 @@ def login():
     else:
         flash("invalid username or password")
 
+    return redirect("/")
+
+@app.route("/home")
+def back_home():
     return redirect("/")
 
 @app.route("/logout")
