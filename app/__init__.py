@@ -37,8 +37,8 @@ def new():
     if request.method == "GET":
         return render_template('new_story.html')
     else:
-        stories.create_story(request.form["title"], request.form["story"], session['user_id'])
-        return redirect('/') 
+        story_id = stories.create_story(request.form["title"], request.form["story"], session['user_id'])
+        return redirect(f'/story/{story_id}') 
 
 @app.route("/story/<id>")
 def story(id):
