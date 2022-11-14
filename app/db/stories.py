@@ -38,6 +38,7 @@ def get_title(story_id):
         r = c.execute("SELECT title FROM stories WHERE id = ?", (story_id,))
         title = r.fetchone()
     conn.close()
+
     return title[0]
 
 
@@ -49,6 +50,7 @@ def get_story(story_id):
         story = r.fetchall()
         story = [line[0] for line in story]
     conn.close()
+
     return story
 
 
@@ -60,6 +62,7 @@ def get_contributors(story_id):
         contributors = r.fetchall()
         contributors = [line[0] for line in contributors]
     conn.close()
+
     return contributors
 
 
@@ -71,6 +74,7 @@ def get_all():
         stories = r.fetchall()
         stories = [[story[0], story[1]] for story in stories]
     conn.close()
+
     return stories
 
 
@@ -82,6 +86,7 @@ def get_contributed(user_id):
         stories = r.fetchall()
         stories = [[story[0], story[1]] for story in stories]
     conn.close()
+
     return stories
 
 

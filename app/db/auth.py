@@ -26,6 +26,8 @@ def check_username(username):
         c = conn.cursor()
         r = c.execute("SELECT * FROM users WHERE username = ?", (username,))
         user = r.fetchone()
+    conn.close()
+
     return user is None
 
 
@@ -35,6 +37,8 @@ def get_user_id(username):
         c = conn.cursor()
         r = c.execute("SELECT id FROM users WHERE username = ?", (username,))
         id = r.fetchone()
+    conn.close()
+
     return id[0]
 
 
