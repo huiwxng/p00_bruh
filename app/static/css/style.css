@@ -12,7 +12,7 @@
 
 html {
     background-color: #40c7e7;
-    background-image: url("layered-peaks-haikei.svg");
+    background-image: url("/static/layered-waves-haikei.svg");
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
