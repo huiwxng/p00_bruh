@@ -30,18 +30,33 @@ html {
     margin-top: 20px;
 }
 
-.title {
-    background-color: #fff50b;
-    color: black;
-    padding: 10px;
-    border: 4px black solid;
-}
-
 .center {
     text-align: center;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+.m-0 {
+    margin: 0px;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.text-black {
+    color: black;
+    }
+
+.titlebar {
+    background-color: #fff50b;
+    color: black;
+    padding: 10px;
+    border: 4px black solid;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .create-a-new-story {

@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     if 'username' in session:
-        return render_template('home.html', contributed_stories=stories.get_contributed(session["user_id"]), uncontributed_stories=stories.get_uncontributed(session["user_id"])) 
+        return render_template('home.html', contributed_stories=stories.get_contributed(session["user_id"]), uncontributed_stories=stories.get_uncontributed(session["user_id"]), username=session["username"]) 
     return render_template('login.html')
 
 @app.route("/register", methods=["GET", "POST"])
@@ -35,7 +35,7 @@ def new():
     if 'username' not in session:
         return redirect("/")
     if request.method == "GET":
-        return render_template('new_story.html')
+        return render_template('new_story.html', username=session["username"])
     else:
         story_id = stories.create_story(request.form["title"], request.form["story"], session['user_id'])
         return redirect(f'/story/{story_id}') 
@@ -46,9 +46,9 @@ def story(id):
         return redirect("/")
 
     if session["username"] in stories.get_contributors(id):
-        return render_template('story.html', story_title=stories.get_title(id), authors=stories.get_contributors(id), story=stories.get_story(id)) 
+        return render_template('story.html', story_title=stories.get_title(id), authors=stories.get_contributors(id), story=stories.get_story(id), username=session["username"]) 
     
-    return render_template('hidden_story.html', story_title=stories.get_title(id), story_id=id, last_line=stories.get_story(id)[-1]) 
+    return render_template('hidden_story.html', story_title=stories.get_title(id), story_id=id, last_line=stories.get_story(id)[-1], username=session["username"]) 
 
 
 @app.route("/story/<id>/edit", methods=["POST"])

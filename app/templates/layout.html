@@ -10,11 +10,26 @@
 </head>
 
 <body>
-    <h1><a class="title decoration-none script-font center" href="/">words and their stories</a></h1>
+    <div class="titlebar">
+        
+        {% if username %}
+        <h2 class="script-font invisible m-0">logged in as: {{username}}</h2>
+        {% else %}
+        <div> </div>
+        {%endif%}
+        <h1 class="m-0">
+            <a class="decoration-none script-font text-black" href="/">words and their stories</a>
+        </h1>
+        {% if username %}
+        <h2 class="script-font m-0">logged in as: {{username}}</h2>
+        {%else%}
+        <div> </div>
+        {%endif%}
+        
+    </div>
     
     <h2 class="decoration-none script-font center">by hui wang, ryan lau, jonathan song</h2>
         
-    <h3 class="center serif-font">This program allows the user to create and save their own stories, as well as allowing people to add to other people's stories.</h3>
 
     <div>
         {% block content %}{% endblock %}
