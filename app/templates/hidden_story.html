@@ -4,20 +4,23 @@
 
 {% block content %}
 
-<h3>{{story_title}}</h3>
+<div class="edit">
+    <h3 class="center story-title-font">{{story_title}}</h3>
+    
+    <p class="center">
+        {{last_line}}
+    </p>
+    
+    <form method="POST" action="/story/{{story_id}}/edit" class="add-text">
+        <textarea cols="40" class="mb-2 textbox" placeholder="continue the story!" type="text" name="line"></textarea>
+        <br>
+        <input class="mb-2 button" type="submit" value="add to story">
+    </form>
+</div>
 
-<p>
-    {{last_line}}
-</p>
 
-<form method="POST" action="/story/{{story_id}}/edit">
-    <textarea cols="40" class="mb-2" placeholder="continue the story!" type="text" name="line"></textarea>
-    <br>
-    <input class="mb-2" type="submit" value="add to story">
-</form>
-
-<form action="/home">
-    <input type="submit" name="home" value="home">
+<form action="/home" class="center">
+    <input class="button" type="submit" name="home" value="home">
 </form>
 
 {% endblock %}

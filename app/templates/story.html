@@ -4,18 +4,20 @@
 
 {% block content %}
 
-<h3>{{story_title}}</h3>
-<h3>written by: {{ authors|join(", ") }}</h3>
+<div class="story">
+    <h3 class="story-title-font center">{{story_title}}</h3>
+    <h3 class="center">written by: {{ authors|join(", ") }}</h3>
+    
+    <p class="center">
+        {% for line in story %}
+        {{line}}
+        <br>
+        {% endfor %}
+    </p>
+</div>
 
-<p>
-    {% for line in story %}
-    {{line}}
-    <br>
-    {% endfor %}
-</p>
-
-<form action="/home">
-    <input type="submit" name="home" value="home">
+<form class="center" action="/home">
+    <input class="button" type="submit" name="home" value="home">
 </form>
 
 {% endblock %}

@@ -4,16 +4,17 @@
 <head>
     <title>{% block title %}{% endblock %} - words and their stories</title>
     <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:700,600' rel='stylesheet'>
 </head>
 
 <body>
-    <h1><a class="decoration-none" href="/">words and their stories</a>
+    <h1><a class="title decoration-none script-font center" href="/">words and their stories</a></h1>
     
-    <h2>by hui wang, ryan lau, jonathan song</h2>
+    <h2 class="decoration-none script-font center">by hui wang, ryan lau, jonathan song</h2>
         
-    <h3>This program allows the user to create and save their own stories, as well as allowing people to add to other people's stories.</h3>
-        
-    </h1>
+    <h3 class="center serif-font">This program allows the user to create and save their own stories, as well as allowing people to add to other people's stories.</h3>
 
     <div>
         {% block content %}{% endblock %}

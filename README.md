@@ -7,6 +7,8 @@
 
 ### Description
 
+This program allows the user to create and save their own stories, as well as allowing people to add to other people's stories. Each user can only add to each story once. While contributing to a story, the user can only view the last line of the story. After the user has contributed to the story, they can view the entire story.
+
 ### Launch Codes
 
 0. Clone repo

@@ -4,38 +4,43 @@
 
 {% block content %}
 
-<h3> <a href="/new">create a new story</a> </h3>
+<h3 class="create-a-new-story"> <a href="/new" class="decoration-none">create a new story</a> </h3>
 
-<h3> read stories </h3>
+<div class="stories-list">
+    
+    <h3> read stories </h3>
+    
+    <ul>
+        {% for story in contributed_stories %}
+        <li>
+            <a href="/story/{{story[0]}}" class="decoration-none">{{story[1]}}</a>
+        </li>
+        {% endfor %}
+    
+    </ul>
+    {% if contributed_stories|length == 0 %}
+        <p class="text-red">no stories to read, create a new story or contribute to a story below</p>
+    {% endif %}
+    
+    <h3> write stories </h3>
+    
+    <ul>
+        {% for story in uncontributed_stories %}
+        <li>
+            <a href="/story/{{story[0]}}" class="decoration-none">{{story[1]}}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    
+    {% if uncontributed_stories|length == 0 %}
+        <p class="text-red">no new stories :(</p>
+    {% endif %}
 
-<ul>
-    {% for story in contributed_stories %}
-    <li>
-        <a href="/story/{{story[0]}}">{{story[1]}}</a>
-    </li>
-    {% endfor %}
+</div>
 
-</ul>
-{% if contributed_stories|length == 0 %}
-    <p class="text-red">no stories to read, create a new story or contribute to a story below</p>
-{% endif %}
 
-<h3> write stories </h3>
-
-<ul>
-    {% for story in uncontributed_stories %}
-    <li>
-        <a href="/story/{{story[0]}}">{{story[1]}}</a>
-    </li>
-    {% endfor %}
-</ul>
-
-{% if uncontributed_stories|length == 0 %}
-    <p class="text-red">no new stories :(</p>
-{% endif %}
-
-<form action="/logout">
-    <input type="submit" name="logout" value="logout">
+<form class="center" action="/logout">
+    <input class="button" type="submit" name="logout" value="logout">
 </form>
 
 {% endblock %}

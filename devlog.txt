@@ -94,14 +94,20 @@ huiW -- 2022-11-12 00:45
 - add home redirect
 ==============================================================
 
-ryanL -- 2022-11-12 8:30
+ryanL, huiW -- 2022-11-12 08:30
 --------------------------------------------------------------
 - check session before loading pages that need session; 
   redirect to / if not logged in
 - save user's id into session
 ==============================================================
 
-
 ryanL -- 2022-11-12 15:00
 --------------------------------------------------------------
 - finish stories tables queries
+
+huiW -- 2022-11-15 03:45
+--------------------------------------------------------------
+- add description to README.md
+- add css to beautify the website
+- change html to implement css
+- use haikei svg: https://app.haikei.app/

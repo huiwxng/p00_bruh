@@ -8,5 +8,153 @@
 
 .decoration-none {
     text-decoration: none;
+}
+
+html {
+    background-color: #40c7e7;
+    background-image: url("layered-peaks-haikei.svg");
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.script-font {
+    font-family: 'Nanum Pen Script', cursive;
+}
+
+.story-title-font {
+    font-size:50px;
+    font-family: 'Amatic SC', cursive;
+    margin-bottom: 0px;
+    margin-top: 20px;
+}
+
+.title {
+    background-color: #fff50b;
     color: black;
+    padding: 10px;
+    border: 4px black solid;
+}
+
+.center {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.create-a-new-story {
+    background-color: #fff50b;
+    border-radius:20px;
+    border: 3px black solid;
+    padding: 5px;
+    width: 15%;
+    text-align: center;
+    margin: auto;
+}
+
+.create {
+    background-color: #fff50b;
+    width: 70%;
+    margin: auto;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-radius:20px;
+    border: 3px black solid;
+}
+
+.stories-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff50b;
+    width: 70%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    padding: 10px;
+    border-radius:20px;
+    border: 3px black solid;
+}
+
+.story {
+    background-color: #fff50b;
+    width: 70%;
+    margin: auto;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-radius:20px;
+    border: 3px black solid;
+}
+
+.edit {
+    background-color: #fff50b;
+    width: 70%;
+    margin: auto;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-radius:20px;
+    border: 3px black solid;
+}
+
+.add-text {
+    text-align: center;
+}
+
+.textbox {
+    text-align: center;
+    width: 70%;
+    height: 80px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.storytitle {
+    text-align: center;
+    width: 30%;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.storybox {
+    text-align: center;
+    width: 50%;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.creds {
+    background-color: #fff50b;
+    width: 20%;
+    margin: auto;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-radius:20px;
+    border: 3px black solid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+}
+
+.creds-form {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.button {
+    background-color: #ff934c;
+    border-radius:4px;
+    border: black 2px solid;
+    padding: 5px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+}
+
+.button:hover {
+    opacity: 80%;
+    cursor: pointer;
+    color: white;
 }

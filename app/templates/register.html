@@ -4,17 +4,25 @@
 
 {% block content %}
 
-<h3>register</h3>
+<div class="creds">
+    <h3 class="center">register</h3>
+    
+    <form method="POST" action="/register" class="creds-form">
+        <input class="mb-2" placeholder="username" type="text" name="username">
 
-<form method="POST" action="/register">
-    <input class="mb-2" placeholder="username" type="text" name="username">
-    <br>
-    <input class="mb-2" placeholder="password" type="password" name="password">
-    <br>
-    {% if message %}
-    <p class="text-red">{{message}}</p>
-    {% endif %}
-    <input class="mb-2" type="submit" value="register">
+        <input class="mb-2" placeholder="password" type="password" name="password">
+
+        {% if message %}
+        <p class="text-red">{{message}}</p>
+        {% endif %}
+        
+        <input class="mb-2 button" type="submit" value="register">
+    </form>
+</div>
+
+
+<form action="/home" class="center">
+    <input class="button" type="submit" name="back" value="back">
 </form>
 
 {% endblock %}

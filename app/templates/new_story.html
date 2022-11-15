@@ -4,18 +4,24 @@
 
 {% block content %}
 
-<h3>new story</h3>
+<div class="create">
+    <h3 class="center story-title-font">new story</h3>
 
-<form method="POST" action="/new">
-    <input class="mb-2" placeholder="a great title" type="text" name="title">
     <br>
-    <textarea style="font-family: sans-serif;" cols="40" rows="20" class="mb-2" placeholder="the start of a great story..." type="text" name="story"></textarea>
-    <br>
-    <input class="mb-2" type="submit" value="create story">
-</form>
+    
+    <form method="POST" action="/new" class="add-text">
+        <input class="mb-2 storytitle" placeholder="a great title" type="text" name="title">
+        <br>
+        <textarea class="storybox" cols="40" rows="20" class="mb-2" placeholder="the start of a great story..." type="text" name="story"></textarea>
+        <br>
+        <br>
+        <input class="mb-2 button" type="submit" value="create story">
+    </form>
+</div>
 
-<form action="/home">
-    <input type="submit" name="home" value="home">
+
+<form action="/home" class="center">
+    <input class="button" type="submit" name="home" value="home">
 </form>
 
 {% endblock %}

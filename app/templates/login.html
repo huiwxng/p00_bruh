@@ -4,25 +4,27 @@
 
 {% block content %}
 
-<h3>login</h3>
+<div class="creds">
+    <h3>login</h3>
+    
+    <form method="POST" action="/login" class="creds-form">
+        <input class="mb-2" placeholder="username" type="text" name="username">
+        
+        <input class="mb-2" placeholder="password" type="password" name="password">
+    
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="text-red center">{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    
+        <input class="mb-2 button" type="submit" value="login">
+    </form>
+    
+    <a href="/register">new? register here</a>
+</div>
 
-<form method="POST" action="/login">
-    <input class="mb-2" placeholder="username" type="text" name="username">
-    <br>
-    <input class="mb-2" placeholder="password" type="password" name="password">
-    <br>
-
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for message in messages %}
-                <p class="text-red">{{message}}</p>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
-
-    <input class="mb-2" type="submit" value="login">
-</form>
-
-<a href="/register">new? register here</a>
 
 {% endblock %}
